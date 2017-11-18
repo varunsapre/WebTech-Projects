@@ -9,18 +9,18 @@ Some functionality choices may not make sense while hosting this on your own sys
 
 Steps to get this running on your system:
 
-# --Installing mysql components-- 
+## --Installing mysql components-- 
 sudo apt-get update
 sudo apt-get install mysql-server
 
-# --Installing flask components--
+## --Installing flask components--
 sudo pip2 install flask 
 sudo pip2 install flask-mysql
 
-# --Installing Mutagen for MP3 recognition--
+## --Installing Mutagen for MP3 recognition--
 sudo pip2 install mutagen
 
-# --Setting up DB--
+## --Setting up DB--
 $ mysql -u root -p
 	<enter password>
 
@@ -35,13 +35,13 @@ mysql> CREATE TABLE `Bob`.`User` (
   	PRIMARY KEY (`user_id`));
 
 
-# --Running the code--
+## --Running the code--
 $ python2 app.py
 
-# --Accessing webpage--
+## --Accessing webpage--
 
 localhost:5000 
 OR
 127.0.0.1:5000
 
-# Note: This was tested only on Linux and works best on Mozilla Firefox. Chrome and Flask do not like each other.
+**Note: This was tested only on Linux and works best on Mozilla Firefox. Chrome and Flask do not like each other.**
