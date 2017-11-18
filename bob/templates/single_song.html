@@ -1,0 +1,71 @@
+<html>
+	<head>
+	</head>
+	<style>
+		.outer_container{
+			display: inline-block;
+			height:80%;
+			width:80vw;
+			margin-left:5vw;
+			color: #373737;
+		}
+		.inner_container{
+			margin-top:24vh;
+			max-height:25vw;
+			margin-left:4vw;
+			width:30vw;
+			float:left;
+			background-size:50%;
+			background-repeat: no-repeat;
+			background-position:center;
+		}
+		.inner_container h3 h4 h5{
+			margin:0;
+			padding:0;
+		}
+		.inner_container:hover{
+			cursor: pointer;
+		}
+		.outer_container img{
+			margin-top:15vh;
+			margin-left:8vw;
+			height:25vw;
+			width:25vw;
+			float:left;
+		}
+	</style>
+	<body style="color:#373737">
+		<div class="outer_container">
+			<img class="cover_pic z-depth-4" src="{{src}}"/>
+			
+			<div class="inner_container z-depth-3" id="{{loc}}" style="background-image: url({{ url_for('static',filename = 'images/play_white.png')}}" >
+				<center>
+					<br>
+					<h3 id="name"> {{name}} </h3>
+					<h4 id="album"> {{album}} </h4>
+					<h5 id="artist"> {{artist}} </h5>
+					<br>
+				</center>
+			</div>
+		</div>
+	</body>
+	<script>
+		$(document).ready(function(){
+			$("#fromAll").text("false")
+			$(".inner_container").click(function(){
+				//alert($(".inner_container").attr("id"))
+				mediaPath = $(".inner_container").attr("id")
+				name = $("#name").text()
+				document.getElementById("songName_player").innerHTML = name;
+				audio.src = mediaPath
+				name1 = mediaPath.split("/");
+   				cover = name1.slice(0,name1.length-1)
+   				cover = cover.join("/") + "/cover.jpg"
+   				document.getElementById("songName_player").innerHTML = name;
+    			document.getElementById("song_pic").src= cover;
+				audio.play()
+			})
+		})
+	</script>
+
+</html>

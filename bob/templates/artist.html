@@ -1,0 +1,51 @@
+<html>
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/artist.css') }}">
+	<body>
+		<center>
+			<div class="artist_container">
+				<ul class="artist_ul">		
+				{%for artist in artists%}
+					<li class="artist_li">				
+							<div class="artist_load " id="{{artist}}" style="background-image: url('static/images/loading1.gif');">
+								<iframe style="display:none" onload="myFunction('{{artist}}')" hidden></iframe>
+								<div class="overlay">
+									<br><br><br><br>
+									<h5>{{ artist }}</h5> 
+								</div>
+							</div>
+					</li>
+				{%endfor%}
+				</ul>
+			</div>
+		</center>
+	</body>
+	<script>
+		$(document).ready(function(){
+			$("#fromAll").text("false")
+			$('.artist_load').click(function(e){
+				var artist = e.currentTarget.id
+				artist = artist.split(" ").join("%20")
+				//alert(artist)
+				$('#main_container').load("/"+artist+"/albums").hide().fadeIn('slow').scrollTop()
+				//alert(document.getElementById(artist))
+			})
+			//style="background-image: url('static/music/{{artist}}/artist.jpg');"
+		})
+		count = 0
+		function myFunction(artist) {
+		    //alert(artist)
+		    var artist1 = artist.split(" ").join("%20")
+		    address = "static/music/"+artist+"/artist.jpg"
+		    count = count + 1
+		    setTimeout(loadimg,count * 750,artist,artist1);
+		    
+		}
+		function loadimg(artist,artist1){
+			//alert("hello")
+			//$('#'+artist.split("%20").join(" ")).parent().css("background-image","")
+			document.getElementById(artist).style.backgroundImage = "url(static/music/"+artist1+"/artist.jpg)"
+			//document.getElementById(artist).style.backgroundImage = "url(static/music/"+artist1+"/artist.jpg)"
+
+		}		
+	</script>
+</html>

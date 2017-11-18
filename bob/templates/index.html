@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title> <bob> </title>
+		<!--Import Google Icon Font-->
+		<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<!--Import materialize.css-->
+		<link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='css/materialize.css') }}"  media="screen,projection"/>
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/self.css') }}">		
+		<!--Let browser know website is optimized for mobile-->
+		<meta name="viewport" content="width=device-width,height=device-height, initial-scale=1.0"/>
+		  <link rel="shortcut icon" href="{{url_for('static',filename='images/icon.png')}}" type="image/x-icon">
+		
+	</head>
+	<!--style="background-image:url({{ url_for('static',filename='images/wallpaper2.jpg') }})"-->
+	<body style="background-image:url({{ url_for('static',filename='images/wallpaper2.jpg') }})">
+		<p id="fromAll" style="display:none">false</p>
+		<div class="navbar-fixed z-depth-2">
+			<nav>
+				<div class="nav-wrapper">
+					<a href="#!" class="brand-logo center">
+						<img src="{{ url_for('static', filename='images/logo_white.png') }}" style="margin-top:5px;max-height:60px">
+					</a>
+					<form style="z-index:10000">
+					<div class="input-field right">
+						<input id="search" type="search" placeholder="              search"/>
+						<label class="label-icon" for="search"><i class="material-icons">search</i></label>
+						<i class="material-icons">close</i>
+						<div id="content"></div>
+					</div>
+				</form>
+				</div>
+				
+			</nav>
+		</div>
+		<div id="sidebar">
+			<ul>
+				<li id="side_logout"> 
+					<img class="sidebar_icon" src="{{ url_for('static', filename='images/login_white.png') }}"> 
+					<p class="sidelist" >logout</p> 
+				</li>
+				<li id="side_artist"> 
+					<img class="sidebar_icon" src="{{ url_for('static', filename='images/artist_white.png') }}"> 
+					<p class="sidelist">artist</p> 
+				</li>
+				<li id="side_album"> 
+					<img class="sidebar_icon" src="{{ url_for('static', filename='images/album_white.png') }}"> 
+					<p class="sidelist" >albums</p> 
+				</li>
+				<li id="side_song"> 
+					<img class="sidebar_icon" src="{{ url_for('static', filename='images/songs_white.png') }}"> 
+					<p class="sidelist" >top songs</p> 
+				</li>
+				<li class="minimize"> 
+					<img class="sidebar_icon mini" src="{{ url_for('static', filename='images/minimize_white.png') }}"> 
+					<p class="sidelist" >minimize</p> 
+				</li>
+			</ul>
+		</div>
+		<div id="main_container"></div>
+		<div id="musicplayer">
+			<div class="player_pic">
+					<img id="song_pic">
+			</div>
+			<div class="player_songName">
+				<h5 id="songName_player"></h5>
+			</div>
+			<div class="player_icon" id="btn_prev">
+				<img src="{{ url_for('static', filename='images/prev_white.png') }}">
+			</div>
+			<div id="audio0" style="float: left;">
+              <audio preload id="audio1" controls="controls" style="width: 35vw;margin-top: 2vh;">Your browser does not support HTML5 Audio!</audio>
+            </div>
+			<div class="player_icon" id="btn_next">
+				<img src="{{ url_for('static', filename='images/next_white.png') }}">
+			</div>
+						
+			
+		</div>
+		<!--Import jQuery before materialize.js-->
+		<script type="text/javascript" src="{{ url_for('static', filename='js/jquery-2.1.1.min.js') }}"></script>
+		<script>
+			$(document).ready(function(){
+				$("#main_container").load("/splash").hide().fadeIn(1500)
+			})
+		</script>
+		<script type="text/javascript" src="{{ url_for('static', filename='js/materialize.min.js') }}"></script>
+		<script type="text/javascript" src="{{ url_for('static', filename='js/self2.js') }}"></script>
+		<script type="text/javascript" src="{{ url_for('static', filename='js/functions.js') }}"></script>
+		<script type="text/javascript" src="{{ url_for('static', filename='js/parallax.min.js') }}"></script>
+		<script type="text/javascript" src="{{ url_for('static', filename='js/song.js') }}"></script>
+	</body>
+</html>	

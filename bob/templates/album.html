@@ -1,0 +1,87 @@
+<html>
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/artist.css') }}">
+	<head>
+		<title> Albums </title>
+	</head>
+	<body>
+		<center>
+			<div class="artist_container">
+				{%if all == True%}
+				<p id="all" style="display:none">true</p>
+				{%endif%}
+				<ul class="artist_ul">		
+				{% if all==False%}
+					{%for album in albums%}
+						<li class="artist_li" > 					
+								<div class="artist_load" id="{{artist}}.{{album}}" style="background-image: url('static/music/{{artist}}/{{album}}/cover.jpg');">
+									<div class="overlay">		
+											<br><br><br><br>
+											<h5>{{ album }}</h5> 
+									</div>
+								</div>
+						</li>
+					{%endfor%}
+				{%else%}
+					{%for album in albums%}
+						<li class="artist_li" > 					
+								<div class="artist_load" id="{{album[0]}}.{{album[1]}}" style="background-image: url('static/images/loading1.gif')">
+									<iframe style="display:none" onload="myFunction('{{album[0]}}', '{{album[1]}}')" hidden></iframe>
+									<div class="overlay">	
+										<br><br><br>	
+											<h5>{{ album[1] }}</h5> 
+											<br>
+											<p> {{album[0]}} </p>
+									</div>
+								</div>
+						</li>
+					{%endfor%}
+				{%endif%}
+				</ul>
+			</div>
+		</center>
+		<br><br>
+		{%if all == False%}
+		<div class="back_btn">
+			<a class="btn-floating btn-med waves-effect waves-light grey darken-2 z-depth-3"><i class="material-icons">skip_previous</i></a>
+		</div>
+		{%endif%}
+	</body>
+	<script>
+		$(document).ready(function(){
+
+			if($("#all").text() == "true")
+			{
+				$("#fromAll").text("true");
+			}
+			else{
+				$("#fromAll").text("false");
+			}
+			$('.artist_load').click(function(e){
+				var id = e.currentTarget.id
+				artist = id.split('.')[0].split(" ").join("%20")
+				album = id.split('.')[1].split(" ").join("%20")
+				$('#main_container').load("/"+artist+"/"+album+"/songs").hide().fadeIn(1500).scrollTop()
+			})
+
+			$(".back_btn").click(function(){
+				$('#main_container').load("/artists").hide().fadeIn(1500).scrollTop()
+			})
+		})
+		function myFunction(artist,album) {
+		    //alert(artist)
+		    var id = artist+"."+album
+		    var artist1 = artist.split(" ").join("%20")
+		    var album1 = album.split(" ").join("%20")
+		    address = "static/music/"+artist+"/artist.jpg"
+		    setTimeout(loadimg,2000,id,artist1,album1);
+		    
+		}
+		function loadimg(id,artist1,album1){
+			//alert("hello")
+			//$('#'+artist.split("%20").join(" ")).parent().css("background-image","")
+			document.getElementById(id).style.backgroundImage = "url(static/music/"+artist1+"/"+album1+"/cover.jpg)"
+			//document.getElementById(artist).style.backgroundImage = "url(static/music/"+artist1+"/artist.jpg)"
+
+		}				
+	</script>
+</html>

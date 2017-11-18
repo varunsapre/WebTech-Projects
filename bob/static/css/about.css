@@ -1,0 +1,96 @@
+		
+			.vks{
+				position : relative;
+				//left : 10%;
+				border-radius : 100%;
+				height : 130px;
+				width : 130px;
+				z-index : 100;
+				background-repeat : no-repeat;
+				background-position : center center;
+				background-size: cover;
+			}
+
+			.ya{
+				position : relative;
+				left : 80%;
+				bottom : 100%;
+				border-radius : 100%;
+				height : 130px;
+				width : 130px;
+				z-index : 100;
+				background-repeat : no-repeat;
+				background-position : center center;
+				background-size: cover;
+			}
+			.vs{
+				position : relative;
+				//left : 10%;
+
+				border-radius : 100%;
+				height : 130px;
+				width : 130px;
+
+				background-repeat : no-repeat;
+				background-position : center center;
+				background-size: cover;
+			}
+			.div1{
+				position : relative;
+				display:block;
+				left : 6.5%;
+				top : 3%;
+				height : 10%;				
+				width : 80%;
+				font-size:1.5em;
+
+			}
+			.div2{
+				position : relative;
+				left : 11%;
+				display: block;
+				top : 20%;
+				width : 80%;
+				height : 10%;
+				font-size:1.5em;
+
+			}
+			.div3{
+				position : relative;
+				left : 6.5%;
+				display: block;
+				top : 32%;
+				width : 80%;
+				height : 10%;
+				font-size:1.5em;
+			}
+
+			.info1{
+				position : relative;
+				left : 16%;
+				top : -140%;
+				width : 80%;
+				height : 80%;
+			}
+
+			.info2{
+				position : relative;
+				right : 2%;
+				top : 30%;
+				height : 80%;
+				width : 80%;
+				text-align : right;
+
+			}
+
+			.info3{
+				position : relative;
+				left : 16%;
+				height : 80%;
+				top : -140%;
+				width : 80%;
+
+			}
+			div{
+				color:#373737;
+			}

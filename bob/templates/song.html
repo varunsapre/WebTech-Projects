@@ -1,0 +1,67 @@
+<html>
+	<head>
+		<title>Songs</title>
+		<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/songs.css') }}">
+	</head>
+
+	<body>
+		{%if all == False%}
+			<div class="back_btn">
+				<a class="btn-floating btn-med waves-effect waves-light grey darken-2 z-depth-3"><i class="material-icons">skip_previous</i></a>
+				<p class="getdet" id="{{artist}}.{{album}}" style="display:none;"></p>
+			</div>
+			<div class="song_container">
+		{%else%}
+			<div class="song_container2">
+		{%endif%}
+		
+			<table class="z-depth-3">
+				<col width="20%">
+  				<col width="62%">
+				<col width="25%">
+				<tbody>
+					<thead>
+						<tr>
+							{%if all == False%}
+								<td> Track No. </td>
+							{%else%}
+								<td> Rank </td>
+							{%endif%}
+							<td> Title </td>
+							<td> Length </td>
+						</tr>
+					</thead>
+					
+					{%for elem in song_%}
+						<tr id='{{elem[3]}}' class='song_row'>
+							<td> {{elem[0]}} </td>
+							<td> {{elem[1]}} </td>
+							<td> {{elem[2]}} </td>
+						</tr>
+					{%endfor%}
+				</tbody>
+			</table>
+			<br>
+		</div>
+		
+
+	</body>
+	<script>
+		$(document).ready(function(){
+			$(".back_btn").click(function(){
+				if($("#fromAll").text() == "true")
+				{
+					$('#main_container').load("/albums").hide().fadeIn(1500).scrollTop()
+				}
+				else{
+					id = $(".getdet").attr("id")
+					artist = id.split('.')[0].split(" ").join("%20")
+					album = id.split('.')[1].split(" ").join("%20")
+					$('#main_container').load("/"+artist+"/albums").hide().fadeIn(1500).scrollTop()
+				}
+			})
+		})
+	</script>
+	<script type="text/javascript" src="{{ url_for('static', filename='js/song.js') }}"></script>
+
+</html>
