@@ -1,4 +1,4 @@
-<bob>
+# <bob>
 
 <bob> is a music player that enables you to browse music while still listening to your favourtie tracks.
 This was made for an Adv. Web Technologies course.
