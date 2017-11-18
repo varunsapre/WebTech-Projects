@@ -9,7 +9,6 @@ Some functionality choices may not make sense while hosting this on your own sys
 
 Steps to get this running on your system:
 
-Note: This was tested only on Ubuntu and works best on Mozilla Firefox. Chrome and Flask do not like each other and hence 
 --Installing mysql components-- 
 sudo apt-get update
 sudo apt-get install mysql-server
@@ -44,3 +43,5 @@ $ python2 app.py
 localhost:5000 
 OR
 127.0.0.1:5000
+
+Note: This was tested only on Linux and works best on Mozilla Firefox. Chrome and Flask do not like each other.
