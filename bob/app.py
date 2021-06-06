@@ -1,16 +1,17 @@
 from flask import Flask,render_template,json, request,redirect,url_for, jsonify
 from flaskext.mysql import MySQL
-from werkzeug import generate_password_hash, check_password_hash
+from werkzeug.security import generate_password_hash, check_password_hash
 import glob,pprint,datetime
 from mutagen.mp3 import MP3
+import os
 
 app = Flask(__name__)
 mysql = MySQL()
  
 # MySQL configurations
 app.config['MYSQL_DATABASE_USER'] = 'root'
-app.config['MYSQL_DATABASE_PASSWORD'] = 'sapre'
-app.config['MYSQL_DATABASE_DB'] = 'Bob'
+app.config['MYSQL_DATABASE_PASSWORD'] = 'varunsapre'
+app.config['MYSQL_DATABASE_DB'] = 'BOB'
 app.config['MYSQL_DATABASE_HOST'] = 'localhost'
 mysql.init_app(app)
 conn = mysql.connect()
@@ -64,6 +65,8 @@ def signup():
 	email = request.form['email']
 	password = request.form['passwd']
 	hash_password = generate_password_hash(password)
+
+	print (len(hash_password))
 	if fname and email and password:
 		cursor.execute("INSERT INTO User (fname,lname,email,password) VALUES ('"+fname+"','"+lname+"','"+email+"','"+hash_password+"');")
 		conn.commit()
@@ -148,12 +151,12 @@ def showAllSongs():
 
 @app.route('/select/<song_name>',methods=['GET'])
 def showSelected(song_name):
-	print song_name
+	print (song_name)
 	if '%20' in song_name:
 		song_name.split("%20")
 		" ".join(song_name)
 	song_dir = [x for x in songs if x[0].lower()==song_name.lower()][0]
-	print song_dir
+	print (song_dir)
 	
 	artist = song_dir[1].split("/")[2]
 	album = song_dir[1].split("/")[3]
