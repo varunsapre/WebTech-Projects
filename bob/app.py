@@ -44,7 +44,16 @@ def populate_lib():
 					song_trck = int(song_info['TRCK'].text[0])
 				songs.append([song_title,song])
 				lib[artist][album][song_title] = [song_trck,song_length,song]
-	#pprint.pprint(songs)
+
+	with open("music.txt", "w") as mout:
+		mout.seek(0)
+		for song in songs:
+			mout.write(song[0]+ "\n")
+		mout.truncate()
+
+	# pprint.pprint(songs)
+
+
 @app.route("/home")
 def main():
 	populate_lib()
@@ -169,7 +178,7 @@ def showSelected(song_name):
 def showSongs(artist,album):
 	song_list = list()
 	for song in lib[artist][album]:
-		song_list.append([lib[artist][album][song][0],song,lib[artist][album][song][1],lib[artist][album][song][2].decode('utf-8')])
+		song_list.append([lib[artist][album][song][0],song,lib[artist][album][song][1],lib[artist][album][song][2]])
 	#print sorted(song_list)
 	return render_template('song.html',song_=sorted(song_list),artist=artist,album=album,all=False)
 
