@@ -54,9 +54,10 @@ def populate_lib():
 	# pprint.pprint(songs)
 
 
+
 @app.route("/home")
 def main():
-	populate_lib()
+	# populate_lib()
 	#pprint.pprint(lib) 
 	return render_template('index.html')
 #--------------------LOGIN--------------------
@@ -202,4 +203,5 @@ def sendData():
 	return dat
 
 if __name__ == "__main__":
+	populate_lib()
 	app.run(debug=True, threaded=True,host='0.0.0.0')
